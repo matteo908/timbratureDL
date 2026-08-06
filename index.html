@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DL Services — Il presidio del territorio · 1° semestre 2026</title>
+<meta name="description" content="Come DL Services presidia i cantieri del Triveneto: 145 cantieri, 62 comuni, 10 zone operative, sette giorni su sette. Dati del primo semestre 2026.">
+<meta property="og:title" content="DL Services — Il presidio del territorio">
+<meta property="og:description" content="145 cantieri, 62 comuni, 107.221 ore di servizio. La settimana operativa di DL Services, ora per ora.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#003865;
+  --navy-deep:#001B33;
+  --navy-mid:#0A2B4A;
+  --gold:#E7AC00;
+  --gold-soft:#F5C542;
+  --bone:#F2EFE9;
+  --slate:#8AA0B4;
+  --line:rgba(138,160,180,.22);
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy-deep);
+  color:var(--bone);
+  font-family:'Montserrat',system-ui,sans-serif;
+  font-weight:400;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ---------- tipografia ---------- */
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.7rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);
+}
+h1{
+  font-size:clamp(2.6rem,7vw,5.4rem);
+  font-weight:800;line-height:.98;letter-spacing:-.035em;
+  color:#fff;
+}
+h2{
+  font-size:clamp(1.6rem,3.4vw,2.6rem);
+  font-weight:700;line-height:1.12;letter-spacing:-.025em;color:#fff;
+}
+h3{font-size:1.05rem;font-weight:600;letter-spacing:-.01em;color:#fff}
+.lede{
+  font-size:clamp(1rem,1.55vw,1.22rem);font-weight:300;color:var(--slate);
+  max-width:62ch;line-height:1.7;
+}
+p{color:var(--slate);max-width:66ch}
+.mono{font-family:'IBM Plex Mono',monospace}
+
+/* ---------- barra di testata ---------- */
+.topbar{
+  border-bottom:1px solid var(--line);
+  padding:20px 0;position:sticky;top:0;z-index:50;
+  background:rgba(0,27,51,.82);backdrop-filter:blur(14px);
+}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:baseline;gap:11px}
+.logo .mark{
+  font-weight:800;font-size:1.18rem;letter-spacing:-.03em;color:#fff;
+}
+.logo .mark em{color:var(--gold);font-style:normal}
+.logo .sub{
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--slate);
+}
+.period{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.16em;color:var(--slate);text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(60px,9vw,110px) 0 clamp(40px,6vw,64px);position:relative;overflow:hidden}
+.hero::after{
+  content:"";position:absolute;inset:auto -20% -60% 40%;height:420px;
+  background:radial-gradient(ellipse at center,rgba(231,172,0,.13),transparent 68%);
+  pointer-events:none;
+}
+.hero .eyebrow{margin-bottom:22px;display:block}
+h1 .accent{color:var(--gold)}
+.hero .lede{margin-top:26px}
+.hero-meta{
+  margin-top:36px;display:flex;flex-wrap:wrap;gap:10px 26px;
+  font-family:'IBM Plex Mono',monospace;font-size:.74rem;letter-spacing:.08em;color:var(--slate);
+}
+.hero-meta span{display:flex;align-items:center;gap:9px}
+.hero-meta span::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%;flex:none}
+
+/* ---------- griglia settimanale (elemento firma) ---------- */
+.board{
+  margin:clamp(38px,6vw,64px) 0 0;
+  border:1px solid var(--line);border-radius:3px;
+  background:linear-gradient(170deg,var(--navy-mid),rgba(0,27,51,.55));
+  padding:clamp(20px,3.4vw,34px);
+}
+.board-head{
+  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:16px;margin-bottom:26px;
+}
+.board-head h3{font-size:1.22rem}
+.board-head p{font-size:.84rem;margin-top:5px;max-width:48ch}
+.legend{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.08em}
+.legend .ramp{display:flex;gap:2px}
+.legend .ramp i{width:15px;height:9px;display:block;border-radius:1px}
+
+.grid-scroll{overflow-x:auto;padding-bottom:6px}
+.grid{
+  display:grid;
+  grid-template-columns:44px repeat(24,minmax(21px,1fr));
+  gap:3px;min-width:660px;
+}
+.grid .hr-label,.grid .day-label{
+  font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--slate);
+  display:flex;align-items:center;letter-spacing:.04em;
+}
+.grid .hr-label{justify-content:center;padding-bottom:6px}
+.grid .day-label{justify-content:flex-start;padding-right:8px;text-transform:uppercase;letter-spacing:.13em}
+.cell{
+  aspect-ratio:1/1;border-radius:1px;background:rgba(138,160,180,.07);
+  position:relative;transition:transform .18s ease;
+}
+.cell[data-v]{cursor:default}
+.cell.lit{
+  opacity:0;animation:lightup .5s ease forwards;
+}
+@keyframes lightup{to{opacity:1}}
+.cell:hover{transform:scale(1.32);z-index:5;box-shadow:0 0 0 1px rgba(231,172,0,.55)}
+.cell .tip{
+  position:absolute;bottom:135%;left:50%;transform:translateX(-50%);
+  background:var(--navy-deep);border:1px solid var(--gold);color:#fff;
+  font-family:'IBM Plex Mono',monospace;font-size:.62rem;white-space:nowrap;
+  padding:5px 8px;border-radius:2px;opacity:0;pointer-events:none;transition:opacity .15s;z-index:10;
+}
+.cell:hover .tip{opacity:1}
+.board-foot{
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:26px 44px;
+}
+.peak{display:flex;flex-direction:column;gap:3px}
+.peak .k{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.16em;text-transform:uppercase;color:var(--slate)}
+.peak .v{font-size:1.02rem;font-weight:600;color:#fff}
+.peak .v b{color:var(--gold);font-weight:700}
+
+/* ---------- sezioni ---------- */
+section{padding:clamp(64px,9vw,110px) 0;border-top:1px solid var(--line)}
+.sec-head{margin-bottom:clamp(34px,5vw,56px);max-width:70ch}
+.sec-head .eyebrow{display:block;margin-bottom:16px}
+.sec-head p{margin-top:16px}
+
+/* ---------- numeri ---------- */
+.figures{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--line)}
+.fig{background:var(--navy-deep);padding:30px 24px}
+.fig .n{
+  font-family:'IBM Plex Mono',monospace;font-weight:600;
+  font-size:clamp(2rem,4.2vw,2.9rem);line-height:1;color:var(--gold);letter-spacing:-.03em;
+}
+.fig .l{
+  margin-top:12px;font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--slate);font-weight:500;
+}
+.fig .d{margin-top:8px;font-size:.8rem;color:var(--slate);opacity:.78;line-height:1.5}
+
+/* ---------- zone ---------- */
+.zones{display:flex;flex-direction:column;gap:1px;background:var(--line);border-block:1px solid var(--line)}
+.zone{
+  background:var(--navy-deep);display:grid;
+  grid-template-columns:minmax(190px,1.5fr) minmax(140px,1fr) 62px minmax(120px,2fr);
+  gap:18px;align-items:center;padding:17px 20px;transition:background .2s;
+}
+.zone:hover{background:var(--navy-mid)}
+.zone .zn{font-weight:600;font-size:.92rem;color:#fff;letter-spacing:-.01em}
+.zone .zp{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--slate)}
+.zone .zc{font-family:'IBM Plex Mono',monospace;font-size:1.02rem;font-weight:600;color:var(--gold);text-align:right}
+.bar{height:7px;background:rgba(138,160,180,.13);border-radius:1px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-soft));width:0;transition:width 1s cubic-bezier(.16,1,.3,1)}
+.zone.out .zn{color:var(--slate)}
+.zone.out .zc{color:var(--slate)}
+.zone.out .bar i{background:rgba(138,160,180,.4)}
+
+/* ---------- metodo ---------- */
+.method{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line)}
+.card{background:var(--navy-deep);padding:32px 26px;display:flex;flex-direction:column;gap:13px}
+.card .tag{
+  font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.17em;text-transform:uppercase;
+  padding:5px 10px;border:1px solid;border-radius:2px;align-self:flex-start;
+}
+.card.s .tag{color:var(--gold);border-color:rgba(231,172,0,.5);background:rgba(231,172,0,.08)}
+.card.m .tag{color:var(--gold-soft);border-color:rgba(245,197,66,.32)}
+.card.r .tag{color:var(--slate);border-color:var(--line)}
+.card p{font-size:.88rem}
+.card .pct{font-family:'IBM Plex Mono',monospace;font-size:1.9rem;font-weight:600;color:#fff;line-height:1}
+.card .pct small{font-size:.72rem;color:var(--slate);font-weight:400;letter-spacing:.08em;display:block;margin-top:7px;text-transform:uppercase}
+
+/* ---------- fasce ---------- */
+.bands{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);margin-top:8px}
+.band{background:var(--navy-deep);padding:26px 22px}
+.band .bh{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.band .bn{font-family:'IBM Plex Mono',monospace;font-size:2.1rem;font-weight:600;color:#fff;line-height:1;margin:12px 0 9px}
+.band .bb{height:4px;background:rgba(138,160,180,.13)}
+.band .bb i{display:block;height:100%;background:var(--gold);width:0;transition:width .9s cubic-bezier(.16,1,.3,1)}
+.band .bd{margin-top:12px;font-size:.79rem;color:var(--slate);line-height:1.55}
+
+/* ---------- chiusura ---------- */
+.close{background:var(--navy);border-top:1px solid var(--line)}
+.close .wrap{padding-block:clamp(60px,8vw,96px)}
+.close h2{max-width:20ch}
+.close p{color:rgba(242,239,233,.72);margin-top:20px}
+.rule{width:64px;height:3px;background:var(--gold);margin-bottom:28px}
+
+footer{border-top:1px solid var(--line);padding:32px 0;background:var(--navy-deep)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:14px 30px;justify-content:space-between;align-items:center}
+footer small{font-family:'IBM Plex Mono',monospace;font-size:.66rem;color:var(--slate);letter-spacing:.07em;line-height:1.8}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (max-width:720px){
+  .zone{grid-template-columns:1fr 52px;grid-template-areas:"zn zc" "zp zp" "bar bar";gap:9px}
+  .zone .zn{grid-area:zn}.zone .zc{grid-area:zc}.zone .zp{grid-area:zp}.zone .bar{grid-area:bar}
+  .board-foot{gap:20px 28px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .cell.lit{opacity:1}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="logo">
+      <span class="mark">DL <em>SERVICES</em></span>
+      <span class="sub">Facility Management</span>
+    </div>
+    <span class="period">1° semestre 2026</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Il presidio del territorio</span>
+    <h1>Quando gli altri<br>chiudono,<br><span class="accent">noi apriamo.</span></h1>
+    <p class="lede">Un servizio di pulizia si giudica da quello che trovi la mattina dopo. Per questo mappiamo ogni cantiere: dove siamo, in che giorno, a che ora. Non è una promessa commerciale — è il consuntivo di sei mesi di lavoro, ricostruito timbratura per timbratura.</p>
+    <div class="hero-meta">
+      <span>145 cantieri</span>
+      <span>62 comuni</span>
+      <span>6 province</span>
+      <span>7 giorni su 7</span>
+    </div>
+
+    <div class="board">
+      <div class="board-head">
+        <div>
+          <h3>La settimana operativa, ora per ora</h3>
+          <p>Ogni quadrato è un'ora della settimana. Più è acceso, più cantieri abbiamo presidiati in quel momento.</p>
+        </div>
+        <div class="legend">
+          <span>meno</span>
+          <span class="ramp" id="ramp"></span>
+          <span>più</span>
+        </div>
+      </div>
+      <div class="grid-scroll">
+        <div class="grid" id="grid" role="img" aria-label="Mappa di calore della presenza sui cantieri per giorno della settimana e ora del giorno. Presenza continuativa dalle 5 del mattino a mezzanotte da lunedì a venerdì, con picco il venerdì sera; sabato concentrato in mattinata; domenica presidio ridotto ma attivo 24 ore."></div>
+      </div>
+      <div class="board-foot">
+        <div class="peak"><span class="k">Picco settimanale</span><span class="v">Venerdì 18–19 · <b>46 cantieri</b></span></div>
+        <div class="peak"><span class="k">Picco del sabato</span><span class="v">09–10 · <b>40 cantieri</b></span></div>
+        <div class="peak"><span class="k">Presidio notturno</span><span class="v">attivo <b>tutte le notti</b></span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">I numeri del semestre</span>
+      <h2>Sei mesi, misurati.</h2>
+      <p>Ogni ora di servizio erogata nel primo semestre 2026 è registrata, validata e riconducibile a un cantiere, un giorno e una fascia oraria.</p>
+    </div>
+    <div class="figures">
+      <div class="fig"><div class="n">107.221</div><div class="l">Ore di servizio</div><div class="d">Circa 592 ore erogate ogni giorno, festivi compresi.</div></div>
+      <div class="fig"><div class="n">20.734</div><div class="l">Timbrature validate</div><div class="d">Ogni turno registrato in ingresso e in uscita.</div></div>
+      <div class="fig"><div class="n">145</div><div class="l">Cantieri attivi</div><div class="d">Civili, industriali, logistica e selezione.</div></div>
+      <div class="fig"><div class="n">62</div><div class="l">Comuni serviti</div><div class="d">Tra Friuli Venezia Giulia e Veneto orientale.</div></div>
+      <div class="fig"><div class="n">181</div><div class="l">Giorni consecutivi</div><div class="d">Nessun giorno del semestre senza un cantiere aperto.</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le zone operative</span>
+      <h2>Il territorio, diviso in dieci.</h2>
+      <p>I cantieri sono raggruppati per prossimità geografica. Ogni zona ha un polo di riferimento: è da lì che partono i giri di controllo qualità, ed è così che riduciamo i tempi di trasferimento a vantaggio del tempo passato in cantiere.</p>
+    </div>
+    <div class="zones" id="zones"></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Il controllo qualità</span>
+      <h2>Sappiamo quando bussare.</h2>
+      <p>Conoscere il giorno e l'ora di ogni servizio non serve solo a organizzare il lavoro: serve a controllarlo. Ogni turno è classificato in base a quanto è prevedibile, e questo determina come viene ispezionato.</p>
+    </div>
+    <div class="method">
+      <div class="card s">
+        <span class="tag">Stabile</span>
+        <div class="pct">280<small>turni su 413</small></div>
+        <p>Stesso giorno, stessa ora, ogni settimana. Il sopralluogo è programmabile con settimane di anticipo, senza preavviso al cantiere.</p>
+      </div>
+      <div class="card m">
+        <span class="tag">Semi-regolare</span>
+        <div class="pct">133<small>turni su 413</small></div>
+        <p>Presenza frequente ma non garantita, o con cadenza quindicinale e mensile. Il controllo si programma verificando la settimana giusta.</p>
+      </div>
+      <div class="card r">
+        <span class="tag">Finestra utile</span>
+        <div class="pct">−30′<small>su ogni estremo</small></div>
+        <p>L'ispezione esclude l'avvio e la chiusura del turno: sono i minuti di vestizione, prelievo attrezzature e riordino. Si controlla il lavoro, non la preparazione.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le fasce di servizio</span>
+      <h2>Fuori orario è il nostro orario.</h2>
+      <p>Il 30% dei turni ricorrenti si svolge di sera o di notte, quando gli uffici e gli stabilimenti sono vuoti. È la condizione che rende il servizio invisibile al cliente — e che ci obbliga a essere rigorosi sui controlli.</p>
+    </div>
+    <div class="bands">
+      <div class="band"><div class="bh">Mattina · 06–12</div><div class="bn">183</div><div class="bb"><i data-w="100"></i></div><div class="bd">Cantieri industriali a cavallo del primo turno.</div></div>
+      <div class="band"><div class="bh">Pomeriggio · 12–18</div><div class="bn">104</div><div class="bb"><i data-w="57"></i></div><div class="bd">Uffici, spazi commerciali e strutture sportive.</div></div>
+      <div class="band"><div class="bh">Sera · 18–24</div><div class="bn">88</div><div class="bb"><i data-w="48"></i></div><div class="bd">Pulizie civili dopo la chiusura al pubblico.</div></div>
+      <div class="band"><div class="bh">Notte · 00–06</div><div class="bn">38</div><div class="bb"><i data-w="21"></i></div><div class="bd">Selezione, logistica e impianti a ciclo continuo.</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="close">
+  <div class="wrap">
+    <div class="rule"></div>
+    <h2>Custodire un luogo vuol dire conoscerne gli orari.</h2>
+    <p>Questa mappa non è un esercizio statistico: è lo strumento con cui pianifichiamo i controlli qualità, distribuiamo le squadre e rispondiamo al cliente prima che sia lui a chiedere. Il dato operativo, quando è tenuto in ordine, diventa un servizio migliore.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <small>DL SERVICES S.r.l. · Facility management e servizi integrati · Sequals (PN)</small>
+    <small>Elaborazione su 20.734 timbrature validate · 01.01.2026 – 30.06.2026</small>
+  </div>
+</footer>
+
+<script>
+const GRID = [[1,1,1,1,4,12,23,25,25,24,16,15,18,20,17,14,19,27,37,35,27,11,6,4],[4,2,1,1,3,18,26,27,27,22,15,16,14,15,13,15,12,22,33,34,28,12,6,4],[3,2,1,1,6,16,27,30,25,23,15,15,18,20,16,13,17,26,36,33,28,15,8,4],[3,2,2,1,4,12,25,27,24,21,15,17,18,20,16,16,16,20,34,35,27,13,8,5],[3,2,1,1,3,17,28,28,28,26,26,21,23,25,20,18,21,29,44,46,34,21,9,6],[4,4,2,1,3,6,18,22,38,40,36,33,28,23,20,16,15,17,12,10,5,6,3,3],[2,1,1,1,3,3,7,7,5,4,4,3,2,2,2,2,2,2,2,3,3,3,2,2]];
+const GIORNI = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+const GIORNI_FULL = ['Lunedì','Martedì','Mercoledì','Giovedì','Venerdì','Sabato','Domenica'];
+const ZONE = [
+  {n:'Pedemontana Pordenonese', p:'Spilimbergo / Sequals', c:43, m:10},
+  {n:'Pordenone e cintura', p:'Pordenone', c:32, m:9},
+  {n:'Udine e cintura', p:'Udine', c:16, m:12},
+  {n:'Sanvitese e Bassa Pordenonese', p:'San Vito al Tagliamento', c:15, m:4},
+  {n:'Trevigiano', p:'Conegliano / Oderzo', c:13, m:8},
+  {n:'Medio Friuli e Codroipese', p:'Codroipo', c:12, m:8},
+  {n:'Sacilese e Livenza', p:'Sacile', c:7, m:4},
+  {n:'Bassa Friulana e Costa', p:'San Giorgio di Nogaro', c:3, m:3},
+  {n:'Friuli Collinare e Gemonese', p:'Gemona del Friuli', c:2, m:2},
+  {n:'Fuori area', p:'Vercelli e Pero — trasferte dedicate', c:2, m:2, out:true}
+];
+
+const MAXV = Math.max(...GRID.flat());
+function tint(v){
+  if(!v) return 'rgba(138,160,180,.07)';
+  const q = Math.pow(v / MAXV, .62);
+  return `rgba(231,172,0,${(0.10 + q*0.90).toFixed(3)})`;
+}
+
+// rampa di legenda
+const ramp = document.getElementById('ramp');
+[0.08,0.28,0.5,0.72,1].forEach(q=>{
+  const i = document.createElement('i');
+  i.style.background = `rgba(231,172,0,${0.10+q*0.90})`;
+  ramp.appendChild(i);
+});
+
+// griglia settimanale
+const grid = document.getElementById('grid');
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+grid.appendChild(document.createElement('div'));
+for(let h=0;h<24;h++){
+  const l = document.createElement('div');
+  l.className = 'hr-label';
+  l.textContent = (h%3===0) ? String(h).padStart(2,'0') : '';
+  grid.appendChild(l);
+}
+GRID.forEach((row,d)=>{
+  const dl = document.createElement('div');
+  dl.className = 'day-label';
+  dl.textContent = GIORNI[d];
+  grid.appendChild(dl);
+  row.forEach((v,h)=>{
+    const c = document.createElement('div');
+    c.className = 'cell' + (reduce ? '' : ' lit');
+    c.style.background = tint(v);
+    if(!reduce) c.style.animationDelay = ((d*24+h)*7) + 'ms';
+    const t = document.createElement('span');
+    t.className = 'tip';
+    t.textContent = `${GIORNI_FULL[d]} ${String(h).padStart(2,'0')}:00 · ${v} cantier${v===1?'e':'i'}`;
+    c.appendChild(t);
+    grid.appendChild(c);
+  });
+});
+
+// zone
+const zc = document.getElementById('zones');
+const zmax = Math.max(...ZONE.map(z=>z.c));
+ZONE.forEach(z=>{
+  const el = document.createElement('div');
+  el.className = 'zone' + (z.out ? ' out' : '');
+  el.innerHTML = `<span class="zn">${z.n}</span>
+    <span class="zp">${z.p}</span>
+    <span class="zc">${z.c}</span>
+    <span class="bar"><i data-w="${Math.round(z.c/zmax*100)}"></i></span>`;
+  zc.appendChild(el);
+});
+
+// animazione barre all'ingresso nel viewport
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting) return;
+    e.target.querySelectorAll('i[data-w]').forEach((b,k)=>{
+      setTimeout(()=>{ b.style.width = b.dataset.w + '%'; }, reduce ? 0 : k*55);
+    });
+    io.unobserve(e.target);
+  });
+},{threshold:.22});
+document.querySelectorAll('.zones,.bands').forEach(n=>io.observe(n));
+</script>
+</body>
+</html>
